@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-webpack": "ng run bundler-asset-test:build-webpack",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
