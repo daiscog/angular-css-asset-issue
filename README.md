@@ -1,27 +1,12 @@
 # BundlerAssetTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+Demo of difference in behaviour of `application` (esbuild) vs `browser` (webpack) builders when handling asset URLs in CSS.
 
-## Development server
+The app contains an image file and a CSS rule in the styles.scss file that uses it as a background image.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The app has two builders configured in angular.json: `build` for the `application` builder, and `build-webpack` for the `browser` builder.
 
-## Code scaffolding
+Run `npm run build-webpack` to build with the `browser` builder; build should be successful.
+Run `npm run build` to build with the `application` builder; build will fail with an error `Could not resolve "^smile.svg"`. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Expectation is that the `application` and `browser` builders should be interoperable with the same source code when not using SSR.
